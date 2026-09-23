@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zon Institute's Academic Database</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000000;
+    --ink: #e7e4dd;
+    --ink-dim: #8a8782;
+    --hair: #1c1c1c;
+    --hair-strong: #333333;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; background: var(--bg); }
+  body {
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    padding: calc(2rem + env(safe-area-inset-top, 0px)) 1.5rem calc(2rem + env(safe-area-inset-bottom, 0px));
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .stage { animation: settle 1.1s ease-out both; }
+  }
+  @keyframes settle {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .stage {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  h1 {
+    margin: 0 0 2.6rem;
+    font-weight: 500;
+    font-size: clamp(1.35rem, 3.4vw, 1.95rem);
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  h1 em { font-style: italic; font-weight: 400; color: var(--ink-dim); }
+  h1 a { color: inherit; text-decoration: none; }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.4rem;
+    width: 100%;
+    padding-top: 1.9rem;
+    border-top: 1px solid var(--hair);
+  }
+  nav a {
+    position: relative;
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: clamp(0.92rem, 1.6vw, 1.05rem);
+    letter-spacing: 0.03em;
+    padding: 0.3rem 0.1rem;
+    transition: color 0.4s ease;
+  }
+  nav a[aria-current="page"] { color: var(--ink); }
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 1px;
+    background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.45s ease;
+  }
+  nav a[aria-current="page"]::after { transform: scaleX(1); }
+  nav a:hover, nav a:focus-visible { color: var(--ink); }
+  nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); }
+  nav a:focus-visible { outline: 1px solid var(--hair-strong); outline-offset: 6px; }
+  .divider { width: 1px; height: 0.85rem; background: var(--hair-strong); }
+  @media (max-width: 480px) {
+    nav { flex-wrap: wrap; row-gap: 1.1rem; column-gap: 1.6rem; }
+    .divider { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <h1><a href="index.html">Zon Institute<br><em>Academic Database</em></a></h1>
+    <nav>
+      <a href="about.html" aria-current="page">About the Project</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a href="database.html">Database</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a href="login.html">Login</a>
+    </nav>
+  </div>
+</body>
+</html>
