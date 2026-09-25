@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@300;400&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black:   #000000;
+  --surface: #080808;
+  --line:    #1a1a1a;
+  --dim:     #2e2e2e;
+  --muted:   #5a5a5a;
+  --text:    #c8c8c8;
+  --bright:  #e8e8e8;
+  --accent:  #7b9dff;
+  --font-head: 'Syne', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+html, body {
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ── */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 3rem 4rem 2rem;
+  border-bottom: 1px solid var(--line);
+  gap: 2rem;
+}
+
+.site-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--bright);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  max-width: 600px;
+}
+
+/* ── Nav ── */
+nav {
+  display: flex;
+  gap: 0;
+}
+
+nav a {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  padding: 0.45rem 1.2rem;
+  border: 1px solid var(--line);
+  margin-right: -1px;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+  position: relative;
+}
+
+nav a:first-child {
+  border-radius: 2px 0 0 2px;
+}
+nav a:last-child {
+  border-radius: 0 2px 2px 0;
+  margin-right: 0;
+}
+
+nav a:hover {
+  color: var(--bright);
+  border-color: var(--dim);
+  background: var(--surface);
+  z-index: 1;
+}
+
+/* ── Main / Hero ── */
+main.hero {
+  min-height: calc(100vh - 160px);
+}
+
+/* ── Blank page ── */
+.blank-body main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 160px);
+  color: var(--dim);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+/* ── Database page ── */
+.db-body main {
+  padding: 3rem 4rem;
+}
+
+.db-body .db-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  header {
+    padding: 2rem 1.5rem 1.5rem;
+    gap: 1.5rem;
+  }
+  nav {
+    flex-wrap: wrap;
+  }
+  nav a {
+    flex: 1 1 auto;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: -1px;
+  }
+  .db-body main {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
