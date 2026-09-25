@@ -7,14 +7,13 @@
 }
 
 :root {
-  --black:   #000000;
-  --surface: #080808;
-  --line:    #1a1a1a;
-  --dim:     #2e2e2e;
-  --muted:   #5a5a5a;
-  --text:    #c8c8c8;
-  --bright:  #e8e8e8;
-  --accent:  #7b9dff;
+  --black:     #000000;
+  --surface:   #060606;
+  --line:      #181818;
+  --dim:       #2a2a2a;
+  --muted:     #555555;
+  --text:      #c0c0c0;
+  --bright:    #ffffff;
   --font-head: 'Syne', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
 }
@@ -31,107 +30,151 @@ html, body {
 header {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 3rem 4rem 2rem;
+  align-items: center;
+  padding: 3.5rem 4rem 2.5rem;
   border-bottom: 1px solid var(--line);
   gap: 2rem;
+  text-align: center;
 }
 
 .site-title {
   font-family: var(--font-head);
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
   font-weight: 800;
   color: var(--bright);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   line-height: 1.1;
-  max-width: 600px;
 }
 
 /* ── Nav ── */
 nav {
   display: flex;
+  align-items: center;
   gap: 0;
 }
 
 nav a {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 300;
-  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--bright);
   text-decoration: none;
-  letter-spacing: 0.04em;
-  padding: 0.45rem 1.2rem;
-  border: 1px solid var(--line);
+  letter-spacing: 0.08em;
+  padding: 0.55rem 1.6rem;
+  border: 1px solid var(--dim);
   margin-right: -1px;
-  transition: color 0.15s, background 0.15s, border-color 0.15s;
   position: relative;
+  transition: background 0.12s, border-color 0.12s;
+  white-space: nowrap;
 }
 
-nav a:first-child {
-  border-radius: 2px 0 0 2px;
-}
-nav a:last-child {
-  border-radius: 0 2px 2px 0;
-  margin-right: 0;
-}
+nav a:first-child { border-radius: 2px 0 0 2px; }
+nav a:last-child  { border-radius: 0 2px 2px 0; margin-right: 0; }
 
 nav a:hover {
-  color: var(--bright);
-  border-color: var(--dim);
   background: var(--surface);
+  border-color: var(--muted);
   z-index: 1;
 }
 
-/* ── Main / Hero ── */
+nav a.active {
+  background: var(--surface);
+  border-color: var(--muted);
+  z-index: 1;
+}
+
+/* ── Back button ── */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 0.12s;
+}
+
+.back-btn::before {
+  content: '←';
+  font-size: 0.8rem;
+}
+
+.back-btn:hover { color: var(--bright); }
+
+/* ── Page shell ── */
+.page-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 4rem;
+}
+
+/* ── Main ── */
 main.hero {
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 180px);
 }
 
 /* ── Blank page ── */
-.blank-body main {
+.blank-body .page-wrap {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 160px);
-  color: var(--dim);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  min-height: calc(100vh - 180px);
 }
 
 /* ── Database page ── */
-.db-body main {
-  padding: 3rem 4rem;
+.db-body .page-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-height: calc(100vh - 180px);
 }
 
 .db-body .db-label {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--muted);
-  letter-spacing: 0.12em;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  letter-spacing: 0.14em;
+  padding-bottom: 1.2rem;
   border-bottom: 1px solid var(--line);
 }
 
+/* ── Divider ── */
+.rule {
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+  border: none;
+}
+
 /* ── Responsive ── */
-@media (max-width: 640px) {
+@media (max-width: 680px) {
   header {
-    padding: 2rem 1.5rem 1.5rem;
+    padding: 2.5rem 1.5rem 2rem;
     gap: 1.5rem;
   }
   nav {
     flex-wrap: wrap;
+    justify-content: center;
   }
   nav a {
     flex: 1 1 auto;
     text-align: center;
     margin-right: 0;
     margin-bottom: -1px;
+    border-radius: 0 !important;
   }
-  .db-body main {
+  .page-wrap {
     padding: 2rem 1.5rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
-}
+    }
